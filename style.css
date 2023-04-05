@@ -1,8 +1,21 @@
+/* per evitare lo scroll */
+
+body{
+
+    overflow-x: hidden;
+    background-color: var(--primary);
+
+}
+
 /* setting fonts */
+
 
 *{
     font-family: 'Oswald', sans-serif;
+  
 }
+
+
 
 h1, h2, h3{
     font-family: 'Neuton', serif;
@@ -14,9 +27,9 @@ h1, h2, h3{
 
 :root{
 
-    --primary : #FBF8E4;
-    --secondary : #827BAD;
-    --accent : #E6E3FA;
+    --primary : rgb(251, 248, 228);
+    --secondary : rgb(130, 123, 173);
+    --accent : rgb(230, 227, 250);
     --whiteCustom : #FEFEFE ;
     --blackCustom : #272626;
 }
@@ -82,5 +95,56 @@ h1, h2, h3{
 .background-blackC{
 
     background-color: var(--blackCustom);
+
+}
+
+/* Header */
+
+.headerCustom{
+
+    background: linear-gradient(145deg, rgba(36, 36, 36, 0.222), rgba(230, 227, 250, 0.694)), url('./media/header.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}
+
+/* navbar */
+
+.btnCustom{
+
+    background-color: var(--secondary);
+    color: var(--whiteCustom);
+    transition: 0.4s;
+
+}
+
+.btnCustom:hover{
+
+    background-color: var(--accent);
+    color: var(--blackCustom);
+}
+
+.logoA{
+    width: 60px;
+}
+
+#navIcon{
+    transition: 0.5s;
+}
+
+#mainNavbar{
+    transition: 0.4s;
+    height: 60px;
+}
+
+/* SEZIONE AOS */
+
+.increment-numbers{
+
+    font-size: 60px;
+    color: var(--secondary);
+    font-weight: 900;
 
 }
