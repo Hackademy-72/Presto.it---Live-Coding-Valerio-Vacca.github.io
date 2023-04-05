@@ -1,0 +1,86 @@
+/* setting fonts */
+
+*{
+    font-family: 'Oswald', sans-serif;
+}
+
+h1, h2, h3{
+    font-family: 'Neuton', serif;
+}
+
+
+
+/* setting colori */
+
+:root{
+
+    --primary : #FBF8E4;
+    --secondary : #827BAD;
+    --accent : #E6E3FA;
+    --whiteCustom : #FEFEFE ;
+    --blackCustom : #272626;
+}
+
+/* classi colore */
+
+.text-primaryC{
+
+    color: var(--primary);
+
+}
+
+.text-secondaryC{
+
+    color: var(--secondary);
+
+}
+
+.text-accentC{
+
+    color: var(--accent);
+
+}
+
+.text-whiteC{
+
+    color: var(--whiteCustom);
+
+}
+
+.text-blackC{
+
+    color: var(--blackCustom);
+
+}
+
+/* classi colore background */
+
+.background-primaryC{
+
+    background-color: var(--primary);
+
+}
+
+.background-secondaryC{
+
+    background-color: var(--secondary);
+
+}
+
+.background-accentC{
+
+    background-color: var(--accent);
+
+}
+
+.background-whiteC{
+
+    background-color: var(--whiteCustom);
+
+}
+
+.background-blackC{
+
+    background-color: var(--blackCustom);
+
+}
