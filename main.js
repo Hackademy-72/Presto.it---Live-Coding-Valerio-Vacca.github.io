@@ -183,51 +183,57 @@ let camioncini = document.querySelectorAll('.fa-truck-fast');
 let columns = document.querySelectorAll('.col-custom');
 
 // variabile d'appoggio per far ritornare tutto alle origini
-// let columnsConfirm = false;
+let columnsConfirm = false;
 
 columns.forEach( (colonna, i)=>{
     
 
     // alla singola colonna attacco l'evento mouseenter
 
-    colonna.addEventListener('mouseenter', ()=>{
+        colonna.addEventListener('mouseenter', ()=>{
+
+        if(columnsConfirm == false){
+
+            camioncini[i].classList.remove('text-secondaryC');
+            camioncini[i].classList.add('text-accentC');
+
+        
+        } else {
+
+               // alla seconda entrata
+               camioncini[i].classList.remove('text-blackC'); 
+
+                // e diventa per un attimo del colore di sfondo finché non parte il mouse leave
 
 
-        camioncini[i].classList.remove('text-secondaryC');
-        camioncini[i].classList.add('text-accentC');
+        }
+           
+    
+        })
 
-        // alla seconda entrata
-        camioncini[i].classList.remove('text-blackC');
-
-
-    })
+   
 
     // alla singola colonna attacco l'evento mouseleave
-
 
     colonna.addEventListener('mouseleave', ()=>{
 
 
-        // if(columnsConfirm == false){
+        if(columnsConfirm == false){
 
             camioncini[i].classList.remove('text-accentC');
             camioncini[i].classList.add('text-blackC');
 
-            // alla seconda uscita
+            columnsConfirm = true;
+
+        } else {
+
+            // alla seconda uscita 
+            
             camioncini[i].classList.add('text-secondaryC');
 
-            // columnsConfirm = true;
+            columnsConfirm = false;
 
-        // } else {
-
-            
-
-        //     columnsConfirm = false;
-
-        // }
-
- 
-
+        }
 
     })
 
