@@ -173,3 +173,59 @@ h1, h2, h3{
     text-justify:newspaper; */
 
 }
+
+/* SEZIONE MOUSE ENTER */
+
+.col-custom{
+
+    border: 3px solid var(--secondary);
+    border-radius: 20px;
+    background-color: var(--primary);
+    color: var(--blackCustom);
+    padding: 20px;
+
+    transition: 0.4s;
+
+}
+
+.col-custom:hover{
+
+    background-color: var(--blackCustom);
+    color: var(--primary);
+    transform: scale(1.2);
+
+
+}
+
+/* media query per scalare in maniera più piccola da cellulari, le card col camioncino */
+
+@media screen and (max-width: 900px) {
+
+    .col-custom:hover{
+
+        transform: scale(0.9);
+    
+    }
+    
+}
+
+/* footer */
+
+.min-h{
+
+    min-height: 50px;
+
+}
+
+.footer-link{
+
+    text-decoration: none;
+    color: var(--blackCustom);
+
+}
+
+.footer-link:hover{
+
+    color: var(--whiteCustom);
+
+}
