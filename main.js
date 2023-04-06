@@ -30,6 +30,8 @@ navIcon.addEventListener('click', ()=>{
 
 let mainNavbar = document.querySelector('#mainNavbar');
 
+let containerNav = document.querySelector('#container-nav');
+
 // CATTURA LOGHI
 
 let logoA = document.querySelector('#logoA');
@@ -44,20 +46,26 @@ window.addEventListener('scroll', ()=>{
         mainNavbar.classList.remove('bg-transparent');
         mainNavbar.classList.add('background-primaryC');
 
-        mainNavbar.style.height = '100px';
+        // mainNavbar.style.height = '100px';
+        mainNavbar.style.padding = '20px 0px';
 
         logoB.classList.remove('d-none');
         logoA.classList.add('d-none');
+
+        
 
     } else {
 
         mainNavbar.classList.remove('background-primaryC');
         mainNavbar.classList.add('bg-transparent');
 
-        mainNavbar.style.height = '60px';
+        // mainNavbar.style.height = '60px';
+        mainNavbar.style.padding = '10px 0px';
 
         logoA.classList.remove('d-none');
         logoB.classList.add('d-none');
+
+      
 
     }
 

@@ -6,6 +6,9 @@
     <title>Presto.it</title>
     <link rel="shortcut icon" href="./media/favicon.png" type="image/x-icon">
 
+    <!-- SWIPER CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
     <!-- CDN AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
@@ -123,6 +126,44 @@
 
     <!-- FINE SECTION AOS -->
 
+    <!-- SWIPER -->
+
+    <section class="container my-5 py-5">
+      <div class="row justify-content-center">
+
+        <div class="col-12 col-md-8">
+
+
+          <!-- Slider main container -->
+          <div class="swiper">
+
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+
+              <!-- Slides -->
+              
+           
+            </div>
+
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+            <!-- <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div> -->
+
+            <!-- If we need scrollbar -->
+            <!-- <div class="swiper-scrollbar"></div> -->
+          </div>
+
+
+
+        </div>
+
+      </div>
+    </section>
+
+
 
 
     <!-- JS BOOTSTRAP -->
@@ -136,9 +177,156 @@
         AOS.init();
     </script>
 
+    <!-- SWIPER CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
 
     <!-- JS INTERNO CUSTOM -->
     <script>
+
+      // recensioni
+
+      let reviews = [
+
+          {name : 'Valerio', quote : `il sito più bello che abbia mai visto`, vote : 5},
+          {name : 'Nicolae', quote : `il più bello del mondo`, vote : 4},
+          {name : 'Sara', quote : `spedizioni rapide, palette pessime`, vote : 3},
+          {name : 'Fabio', quote : `il mio falegname lo faceva meglio`, vote : 1},
+
+
+      ];
+
+      // catturo lo swiper wrapper
+
+      let swiperWrapper = document.querySelector('.swiper-wrapper');
+
+      // per ogni elemento dell'array di oggetti reviews..
+
+      reviews.forEach( (recensione)=>{
+
+        // mi creo il tag div, con createElement
+
+        let div = document.createElement('div');
+
+        // assegno le classi con classList.add al div creato
+
+        div.classList.add('swiper-slide' , 'd-flex' , 'align-items-center' , 'justify-content-center');
+
+        // riempio il div, con innerHTML
+        // attenzione a modificare con la sintassi ${} con i parametri reali che ci serve visualizzare sul browser, prendendoli dall'array di oggetti.
+
+        div.innerHTML = `
+        
+                  <div class="card-custom">
+                    <h3>${recensione.name}</h3>
+                    <p class="text-center p-2">
+                      ${recensione.quote}
+                    </p>
+
+                    <div class="d-flex">
+                      ${createStars(recensione.vote)}
+                    </div>
+                  </div>
+        
+        `;
+
+        // appendo il figlio div, al wrapper papà catturato precedentemente
+
+        swiperWrapper.appendChild(div);
+
+
+      } )
+
+
+      // funzione crea stelline di Hokuto
+
+      function createStars(fullStars){
+
+
+        let final = '';
+
+        for(let i = 1; i <=5; i++){
+
+
+          // senza decrementatore mettere fullStars >= i
+          // con decrementatore mettere fullStars > 0
+          if(fullStars >= i){
+
+
+            final += `<i class="fa-solid fa-star"></i>`;
+
+
+            // decrementatore
+            // fullStars--
+
+
+          } else {
+
+
+            final += `<i class="fa-regular fa-star"></i>`;
+
+
+          }
+
+
+        }
+
+        return final;
+
+      }
+
+
+      // inizializzazione swiper
+
+          const swiper = new Swiper('.swiper', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+
+            // EFFECT
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 1,
+            coverflowEffect: {
+                  rotate: 50,
+                  stretch: 0,
+                  depth: 100,
+                  modifier: 1,
+                  slideShadows: false,
+            },
+
+            // breakpoints
+            breakpoints: {
+                  640: {
+                    slidesPerView: 2,
+                    // spaceBetween: 20,
+                   },
+            },
+
+             // Autoplay
+            autoplay: {
+            delay: 1000,
+            disableOnInteraction: false,
+            },
+        
+
+            // If we need pagination
+            pagination: {
+              el: '.swiper-pagination',
+            },
+
+            // Navigation arrows
+            navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            },
+
+            // And if we need scrollbar
+            // scrollbar: {
+            //   el: '.swiper-scrollbar',
+            // },
+          });
 
     </script>
 
