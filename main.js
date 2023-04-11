@@ -228,7 +228,6 @@ columns.forEach( (colonna, i)=>{
         } else {
 
             // alla seconda uscita 
-            
             camioncini[i].classList.add('text-secondaryC');
 
             columnsConfirm = false;

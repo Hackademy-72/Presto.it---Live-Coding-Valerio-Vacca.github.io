@@ -233,3 +233,31 @@ h1, h2, h3{
 .divVuoti{
     height: 50px;
 }
+
+/* pagina annunci */
+
+/* cards annunci */
+
+.announcement-card{
+
+    min-height: 300px;
+    border: 2px solid var(--secondary);
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+
+/* input */
+
+.inputNumber{
+
+    color: var(--secondary);
+    font-size : 20px;
+    font-weight:900;
+
+}
