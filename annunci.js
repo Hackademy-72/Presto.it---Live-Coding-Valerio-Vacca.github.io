@@ -180,7 +180,7 @@ function showCards(array){
 
         div.innerHTML = `
         
-                        <div class="announcement-card">
+                        <div class="announcement-card text-center">
 
                             <p class="h3">${element.name}</p>
                             <h3>${element.category}</h3>
@@ -269,7 +269,7 @@ function showCards(array){
 
     function filterbyPrice(prezzo){
 
-        let filtered = data.filter( (annuncio)=> annuncio.price <= prezzo );        
+        let filtered = data.filter( (annuncio)=> Number(annuncio.price <= prezzo) );        
 
         showCards(filtered);
 
