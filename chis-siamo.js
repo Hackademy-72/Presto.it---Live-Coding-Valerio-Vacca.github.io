@@ -116,6 +116,7 @@ movedDivs.forEach((moved, i)=>{
 
         cardWrapper.innerHTML = '';
 
+     
         let div = document.createElement('div');
         
         div.classList.add('teacher-card');
@@ -132,14 +133,25 @@ movedDivs.forEach((moved, i)=>{
 
         // catturo la singola card per cambiare immagine
 
-        let card = document.querySelector('.teacher-card');
-        
-        card.style.backgroundImage=`url('${teachers[i].url}')`;
+            let card = document.querySelector('.teacher-card');
+       
 
+                card.style.backgroundImage=`url('${teachers[i].url}')`;
+
+                card.setAttribute('data-aos', 'zoom-in');
+                card.setAttribute('data-aos-duration','1500');
+
+
+            })
+            
+
+            
+
+
+ 
+       
 
     })
-
-})
 
 
 // evento su opener
