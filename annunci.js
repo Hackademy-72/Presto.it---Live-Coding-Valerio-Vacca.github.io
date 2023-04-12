@@ -171,7 +171,7 @@ function showCards(array){
     array.sort((a, b) => Number(b.price - a.price));
 
 
-    array.forEach( (element)=>{
+    array.forEach( (element, i)=>{
 
 
         let div = document.createElement('div');
@@ -182,9 +182,12 @@ function showCards(array){
         
                         <div class="announcement-card text-center">
 
+                            <img class="img-card-custom" src="https://picsum.photos/${200 + i}" alt="">
+
                             <p class="h3">${element.name}</p>
                             <h3>${element.category}</h3>
                             <h3>${element.price} €</h3>
+
 
                         </div>
         
@@ -204,18 +207,35 @@ function showCards(array){
 
     // funzione filtra per categoria, mostra cards (al click sul radio button)
 
-    function filterbyCategory(categoria){
+    function filterByCategory(array){
+
+
+        // trasformiamo la node list in un array, sfruttando il papà di tutti gli array che si chiama Array e il suo metodo .from() che mi trasforma una nodelist (in questo caso specifico) in un array
+
+        // dopo di che uso il metodo .find() che mi serve per trovare un solo elemento che rispetti una condizione che io pongo.
+
+        // infine mi prendo l'id del bottone che userò come categoria
+
+        // let categoria = Array.from(checkInputs).find( (button)=> button.checked).id;
+
+        let arrayFromNodelist = Array.from(checkInputs);
+
+        let button = arrayFromNodelist.find((bottone)=> bottone.checked);
+
+        let categoria = button.id;
+
+        // console.log(categoria);
 
 
         if(categoria != 'All'){
 
-            let filtered = data.filter( (annuncio)=> annuncio.category == categoria );
+            let filtered = array.filter( (annuncio)=> annuncio.category == categoria );
 
-            showCards(filtered);
+            return filtered;
 
         } else {
 
-            showCards(data);
+            return data;
 
         }
 
@@ -232,7 +252,7 @@ function showCards(array){
 
         checkInput.addEventListener('click', ()=>{
 
-            filterbyCategory(checkInput.id);
+            globalFilter();
 
         })
 
@@ -267,11 +287,13 @@ function showCards(array){
 
     // funzione che filtra per prezzo
 
-    function filterbyPrice(prezzo){
+    function filterByPrice(array){
 
-        let filtered = data.filter( (annuncio)=> Number(annuncio.price <= prezzo) );        
+        let filtered = array.filter( (annuncio)=> annuncio.price <= +(inputPrice.value) );   
 
-        showCards(filtered);
+        console.log(filtered);
+
+        return filtered;
 
     }
 
@@ -279,11 +301,10 @@ function showCards(array){
 
     inputPrice.addEventListener('input', ()=>{
 
-        filterbyPrice(inputPrice.value);
-
         incrementNumber.innerHTML = inputPrice.value;
 
-
+        globalFilter();
+        
     } )
 
     // cattura word input per filtro per parola
@@ -292,11 +313,14 @@ function showCards(array){
 
     // funzione filtra per parola
 
-    function filterbyWord(nome){
+    function filterByWord(array){
 
-        let filtered = data.filter ( (annuncio)=> annuncio.name.toLowerCase().includes(nome.toLowerCase()) );
+        let nome = wordInput.value;
+    
 
-        showCards(filtered);
+        let filtered = array.filter ( (annuncio)=> annuncio.name.toLowerCase().includes(nome.toLowerCase()) );
+
+        return filtered;
 
     }
 
@@ -304,9 +328,41 @@ function showCards(array){
    
     wordInput.addEventListener('input', ()=>{
 
-        filterbyWord(wordInput.value);
+        globalFilter();
 
     })
 
+
+    // filtro dei filtri, funzione globale
+
+    function globalFilter(){
+    
+        let filteredByCategory = filterByCategory(data);
+    
+        let filteredByPrice = filterByPrice(filteredByCategory);
+    
+        let filteredByWord = filterByWord(filteredByPrice);
+    
+        showCards(filteredByWord);
+    
+    
+    }
+
+
+
 } )
 
+
+
+
+
+
+// FETCH ANNUNCI FALZI
+
+// fetch('./annunciFalzi.json').then(response => response.json()).then( data =>{
+
+
+//     console.log(data);
+
+
+// } )

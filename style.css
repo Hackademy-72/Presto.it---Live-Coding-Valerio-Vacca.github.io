@@ -261,3 +261,13 @@ h1, h2, h3{
     font-weight:900;
 
 }
+
+/* immagine nelle card, pagina annunci */
+
+.img-card-custom{
+
+    height: 150px;
+    border-radius: 50%;
+
+
+}
